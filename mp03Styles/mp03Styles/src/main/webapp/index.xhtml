@@ -1,0 +1,164 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+Author: J. Juneau
+-->
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/
+    xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:h="http://xmlns.jcp.org/jsf/html">
+    <h:head>
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+        <title>#{msgs.pageTitle}</title>
+    </h:head>
+    <h:body>
+        <h:form id="addressForm">
+            <h1>#{msgs.bodyTitle}</h1><br/><br/>
+            <h:dataTable id="empTable" var="emp"
+                         border="1" value="#{employeeController.company.getEmployees()}"
+                         rendered="#{employeeController.company.getEmployees().size() > 0}">
+                
+                <f:facet name="header">
+                    #{msgs.tableTitle}
+                </f:facet>
+                
+                <h:column id="empNameCol">
+                    <f:facet name="header">
+                        <h:commandLink action="#{employeeController.sortByLastName}"> #{msgs.employeeHeader} </h:commandLink>                         
+                    </f:facet>
+                    <h:outputText id="empName" value="#{emp.employeeFirst} #{emp.employeeLast}"/>
+                </h:column>
+                
+                
+                <h:column id="phoneCol">
+                    <f:facet name="header">#{msgs.phoneHeader}</f:facet>
+                    <h:outputText id="phone" value="#{emp.employeePhone}"/>
+                </h:column>
+                
+                <h:column id="emailCol">
+                    <f:facet name="header">#{msgs.emailHeader}</f:facet>
+                    <h:outputText id="email" value="#{emp.employeeEmail}"/>
+                </h:column>
+                
+                <h:column id="homeCol">
+                    <f:facet name="header">#{msgs.addressHeader}</f:facet>
+                    <h:outputText id="home" value="#{emp.employeeHome}"/>
+                </h:column>
+               
+                <h:column id="photoCol">
+                    <f:facet name="header">#{msgs.photoHeader}</f:facet>
+                    <h:graphicImage library="images" name="#{emp.photo}"/>
+                </h:column>
+                
+            </h:dataTable>
+        </h:form>
+        <h:form id="employeeForm">
+            <p>
+                #{msgs.formInsertHeader}
+            </p>
+            <h:panelGrid columns="3">
+                <h:outputLabel for="employeeFirst" value="#{msgs.textBoxFirstName}"/>
+                <h:inputText id="employeeFirst" value="#{employeeController.employeeFirst}">
+                    <f:validateLength minimum="3" maximum="30"/>
+                </h:inputText>
+                
+                <h:message for="employeeFirst" errorStyle="color:red"/>
+                
+                
+                <h:outputLabel for="employeeLast" value="#{msgs.textBoxLastName}" />
+                <h:inputText id="employeeLast" value="#{employeeController.employeeLast}">
+                    <f:validateLength minimum="3" maximum="30"/>
+                </h:inputText>
+                
+                <h:message for="employeeLast" errorStyle="color:red"/>
+                
+                
+                <h:outputLabel for="employeePhone" value="#{msgs.textBoxPhone}" />
+                <h:inputText id="employeePhone" value="#{employeeController.employeePhone}">
+                    <f:validateLength minimum="3" maximum="30"/>
+                </h:inputText>
+                
+                <h:message for="employeePhone" errorStyle="color:red"/>
+                
+                <h:outputLabel for="employeeEmail" value="#{msgs.textBoxEmail}" />
+                <h:inputText id="employeeEmail" value="#{employeeController.employeeEmail}">
+                    <f:validateLength minimum="3" maximum="30"/>
+                </h:inputText>
+                
+                <h:message for="employeeEmail" errorStyle="color:red"/> 
+                
+                <h:outputLabel for="employeeHome" value="#{msgs.textBoxAddress}" />
+                <h:inputText id="employeeHome" value="#{employeeController.employeeHome}">
+                    <f:validateLength minimum="3" maximum="30"/>
+                </h:inputText>
+                
+                <h:message for="employeeHome" errorStyle="color:red"/> 
+                
+            </h:panelGrid>
+            <h:commandButton id="employeeInsert" action="#{employeeController.insert}"
+                             value="#{msgs.buttonInsertEmployee}"/>
+   
+            
+        </h:form>
+        
+        <h:form id="queryForm">
+            <p>
+                #{msgs.formQueryHeader}
+            </p>
+            <h:panelGrid columns="3">
+                <h:outputLabel for="findEmployeeFirst" value="#{msgs.textBoxFirstName}"/>
+                <h:inputText id="findEmployeeFirst" value="#{employeeController.employeeFirst}">
+                    <f:validateLength minimum="3" maximum="30"/>
+                </h:inputText>
+                
+                <h:message for="findEmployeeFirst" errorStyle="color:red"/>
+                
+                
+                <h:outputLabel for="findEmployeeLast" value="#{msgs.textBoxLastName}" />
+                <h:inputText id="findEmployeeLast" value="#{employeeController.employeeLast}">
+                    <f:validateLength minimum="3" maximum="30"/>
+                </h:inputText>
+                
+                <h:message for="findEmployeeLast" errorStyle="color:red"/>
+                         
+            </h:panelGrid>
+            <h:commandButton id="employeeFind" action="#{employeeController.find}"
+                             value="#{msgs.buttonFindEmployee}"/>
+            <h:commandButton id="employeeRemove" action="#{employeeController.remove}"
+                             value="#{msgs.buttonRemoveEmployee}"/>            
+            <h:messages globalOnly="true" errorStyle="color: red" infoStyle="color: blue"/>  
+                
+        </h:form>
+        
+        
+        <h:form>
+        <h:commandButton id="englishLocale" action="#{employeeController.englishLocale}"
+                         value="#{msgs.buttonEnLocale}"/>
+        
+        <h:commandButton id="greekLocale" action="#{employeeController.greekLocale}"
+                         value="#{msgs.buttonElLocale}"/>
+        
+        <h:commandButton id="germanLocale" action="#{employeeController.germanLocale}"
+                         value="#{msgs.buttonDeLocale}"/>
+        
+        <h:commandButton id="frenchLocale" action="#{employeeController.frenchLocale}"
+                         value="#{msgs.buttonFrLocale}"/>
+        
+        <h:commandButton id="spanishLocale" action="#{employeeController.spanishLocale}"
+                         value="#{msgs.buttonEsLocale}"/>
+        
+        <h:commandButton id="arabicLocale" action="#{employeeController.arabicLocale}"
+                         value="#{msgs.buttonArLocale}"/>
+        
+        <h:commandButton id="russianLocale" action="#{employeeController.russianLocale}"
+                         value="#{msgs.buttonRuLocale}"/>
+        
+        <h:commandButton id="chineseLocale" action="#{employeeController.chineseLocale}"
+                         value="#{msgs.buttonZhLocale}"/>
+        
+        
+        </h:form>
+        
+    </h:body>
+</html>
+
