@@ -1,0 +1,71 @@
+.body {
+   background: #eee;
+}
+
+.button {
+	margin: 10px;
+	border-left: thin solid darkGray;
+	border-bottom: thin solid darkGray;
+	border-top: thin solid lightGray;
+	border-right: thin solid lightGray;
+        color: #777;
+        background: #A7C942;
+        font-family: "Comic Sans MS";
+        border-radius: 20%;
+}
+h1 
+{
+   vertical-align: top;
+   text-align: middle;
+   font-style: italic;
+   color: #888;
+   font-size: 2em;
+   font-family: "Comic Sans MS";
+   
+}
+
+.label
+{
+   color: #888;
+   font-size: 0.8em;
+   font-family: "Comic Sans MS";   
+}
+.leftImage {
+   float: left;
+   margin-right: 1em;
+}
+
+.backLink {
+	font-style: italic;
+}
+
+
+.tableHeader {
+    font-family:"Trebuchet MS", Arial, Helvetica, sans-serif;
+    border-collapse:collapse;
+    font-size:1.1em;
+    text-align:left;
+    padding-top:5px;
+    padding-bottom:4px;
+    background-color:#A7C942;
+    color:white;
+    border:1px solid #98bf21;
+}
+
+.oddTableRow {
+    border:1px solid #98bf21;
+}
+
+.evenTableRow {
+    background-color: #eeeeee;
+    font-size:1em;
+
+    padding:3px 7px 2px 7px;
+
+    color:#000000;
+    background-color:#EAF2D3;
+}
+
+.table {
+    border:1px solid green;
+}
